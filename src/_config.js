@@ -7,7 +7,7 @@ export const site = {
 };
 
 export const app = {
-  title: "Template",
+  title: "Форм Мастер",
 };
 
 export const links = [
