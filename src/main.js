@@ -14,3 +14,4 @@ app.use(routes)
 app.use(pinia)
 
 app.mount('#app')
+

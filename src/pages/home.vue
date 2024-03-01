@@ -13,29 +13,27 @@
           <option value="free">Свободный ответ</option>
         </select>
       </div>
-      <ul class="form_lists">
-        <li class="navbar-content">
-          <div class="circle"></div>
-          <input type="text" placeholder="Вариант 1">
-          <p class="q_del">&#10060;</p>
-        </li>
-        <li class="navbar-content">
-          <div class="circle"></div>
-          <input type="text" placeholder="Вариант 2">
-          <p class="q_del">&#10060;</p>
-        </li>
-        <li class="navbar-content">
-          <div class="circle"></div>
-          <input type="text" placeholder="Вариант 3">
-          <p class="q_del">&#10060;</p>
-        </li>
-      </ul>
-      <div class="form_footer">
-        Добавить вариант ответа
+      <Questions />
+      <div class="navbar-content">
+        <button class="form_footer">
+          Добавить вариант ответа
+        </button>
+        <button class="form_footer">
+          Добавить свой ответ
+        </button>
       </div>
-      <div class="form_footer">
-          Добавить вопрос
-        </div>
+      <button class="form_footer">
+        Добавить вопрос
+      </button>
     </div>
   </div>
 </template>
+
+<script>
+import Questions from "@/components/varQuestions.vue";
+export default {
+  components: {
+    Questions
+  }
+}
+</script>

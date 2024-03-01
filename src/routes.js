@@ -9,6 +9,7 @@ const routerHistory = createWebHashHistory();
 import HomePage from "./pages/home";
 import AboutPage from "./pages/about";
 import NotFoundPage from "./pages/notFound";
+import QuestionPage from "./pages/question";
 
 const routers = createRouter({
   history: routerHistory,
@@ -17,6 +18,11 @@ const routers = createRouter({
       path: "/",
       name: "home",
       component: HomePage,
+    },
+    {
+      path: "/question",
+      name: "question",
+      component: QuestionPage,
     },
     {
       path: "/about",
