@@ -1,0 +1,77 @@
+@import 'utils/vars';
+@import 'utils/reset';
+
+
+.form_wrapper {
+    max-width: 770px;
+    margin: 0 auto;
+}
+.form_container {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: $purple-color-100;
+    margin-bottom: 20px;
+    ::placeholder {
+        color: $purple-color;
+    }
+    input {
+        width: 70%;
+    }
+    textarea {
+        margin-top: 20px;
+        font-size: 17px; 
+    }
+    select {
+        padding: 14px 12px;
+        border-radius: 10px;
+        color: $purple-color;        
+    }   
+}
+.form_lists {
+    margin-top: 20px;
+    li {
+        margin-top: 5px;
+    }    
+    .form_radio {
+    width: 5%;
+    transform: scale(1.4);
+    accent-color: $purple-color;
+    }   
+    input {
+        padding: 8px 13px;
+        border-radius: 5px;
+        width: 100%;
+    }
+}
+.form_radio {
+    width: 20px;
+}
+.circle {
+        width: 16px; 
+        height: 16px;
+        margin-right: 10px;
+        background: white;
+        border-radius: 50%;
+}
+.form_footer {
+    text-align: center;
+    color: $purple-color;
+    font-weight: 600;
+    margin-top: 20px;
+    padding: 6px 18px;
+    border-radius: 15px;
+    width: 100%;
+    cursor: pointer;
+    background-color: white;
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    &:hover {
+        box-shadow: none
+    }
+    &:active {
+        box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) inset;
+    }
+}
+.q_del {
+    margin-left: 10px;
+    cursor: pointer;
+}

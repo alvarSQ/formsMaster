@@ -4,6 +4,7 @@ import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import App from './App.vue'
 import './assets/scss/main.scss'
+import './assets/scss/form_master.scss'
 
 const pinia = createPinia()
 pinia.use(piniaPluginPersistedstate)
