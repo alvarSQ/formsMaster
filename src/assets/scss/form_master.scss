@@ -6,6 +6,16 @@
     margin: 0 auto;
 }
 
+.form_description {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: white;
+    color: $purple-color;
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+
 .form_container {
     padding: 20px;
     border-radius: 10px;

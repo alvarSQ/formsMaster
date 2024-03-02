@@ -1,6 +1,18 @@
 <template>
     <div class="form_wrapper">
         <div class="form_container">
+            <h2>Веб-версия Findmykids</h2>
+            <p class="form_description">
+                Мы заметили, что вы активно пользуетесь веб-версией Findmykids помимо приложения на телефоне.
+                Расскажите, что вам в ней нравится и как мы можем ее улучшить. Это поможет сделать Findmykids удобнее
+                для вас.
+            </p>
+            <button class="form_footer">
+                Начать опрос
+            </button>
+
+        </div>
+        <div class="form_container">
             <div class="navbar-content">
                 <h2>Для чего вы используете Findmykids?</h2>
                 <p>1 из 6</p>

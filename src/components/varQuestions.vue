@@ -1,4 +1,4 @@
-<template>
+<template>    
     <ul class="form_lists">
         <li class="navbar-content">
             <div class="square"></div>
