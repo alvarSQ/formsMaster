@@ -1,6 +1,5 @@
-@import 'utils/vars';
-@import 'utils/reset';
-
+@import "utils/vars";
+@import "utils/reset";
 
 .form_wrapper {
     max-width: 770px;
@@ -14,7 +13,7 @@
     margin-bottom: 20px;
 
     h2 {
-        font-size: 1.52em;
+        font-size: 1.6em;
         font-weight: 600;
         color: white;
     }
@@ -44,19 +43,23 @@
 
     li {
         margin-top: 5px;
-    }   
+    }
 
     input {
         padding: 8px 13px;
         border-radius: 5px;
         width: 100%;
     }
+    label {
+        font-weight: 600;
+        color: white;
+    }
 }
 
 .form_radio {
-        width: 5% !important;
-        transform: scale(1.4);
-        accent-color: $purple-color;
+    width: 5% !important;
+    transform: scale(1.4);
+    accent-color: $purple-color;
 }
 
 .circle {
@@ -87,7 +90,7 @@
     box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
 
     &:hover {
-        box-shadow: none
+        box-shadow: none;
     }
 
     &:active {
