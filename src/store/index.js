@@ -1,23 +1,37 @@
 import { defineStore } from 'pinia'
 
-export const useTasksStore = defineStore('tasks', {
+export const useQuestionsStore = defineStore('questions', {
     state: () => ({
-        tasks: [
+        questions: [
             {
-                title: ''
+                id: 1,
+                title: 'Для чего вы используете Findmykids?',
+                answer:
+                    [
+                        'Присматриваю за своим ребенком',
+                        'Присматриваю за внуками/племянниками',
+                        'Присматриваю за младшим братом/сестрой'
+                    ],
+                typeCheck: 'radio',
+                isTextarea: false,
             }
         ],
-        isChekReady: false,
-        selectSort: 'id'
+        onePage:
+        {
+            title: "Веб-версия Findmykids",
+            description: 'Мы заметили, что вы активно пользуетесь веб-версией Findmykids помимо приложения на телефоне. Расскажите, что вам в ней нравится и как мы можем ее улучшить.Это поможет сделать Findmykids удобнее для вас.'
+        },
+        selectOption: 'one'
     }),
-    persist: {
-        paths: ['tasks'],
-    },
+    // persist: {
+    //     paths: ['questions'],
+    // },
     getters: {
-        getTasks: state => state.tasks,
-        getTaskById: state => id => state.tasks.find(el => el.id === id),
+        getQuestions: state => state.questions,
+        getQuestionById: state => id => state.questions.find(el => el.id === id),
         getisChekReady: state => state.isChekReady,
         getDelTask: state => id => state.tasks.filter(el => el.id !== id),
+        getOnePage: state => state.onePage,
 
 
         sortByReadyTask: state => st => st.toSorted((x, y) => x.isReady - y.isReady),

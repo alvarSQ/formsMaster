@@ -37,6 +37,7 @@
     }
 
     textarea {
+        height: 115px;
         margin-top: 20px;
         font-size: 17px;
     }
@@ -89,6 +90,7 @@
 
 .form_footer {
     text-align: center;
+    width: 100%;
     color: $purple-color;
     font-weight: 600;
     margin-top: 20px;

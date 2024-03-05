@@ -1,32 +1,21 @@
 <template>
     <div class="form_wrapper">
-        <div class="form_container">
-            <h2>Веб-версия Findmykids</h2>
-            <p class="form_description">
-                Мы заметили, что вы активно пользуетесь веб-версией Findmykids помимо приложения на телефоне.
-                Расскажите, что вам в ней нравится и как мы можем ее улучшить. Это поможет сделать Findmykids удобнее
-                для вас.
-            </p>
-            <button class="form_footer">
-                Начать опрос
-            </button>
-
-        </div>
-        <div class="form_container">
+        <div class="form_container" v-if="hasQuestion">
             <div class="navbar-content">
                 <h2>Для чего вы используете Findmykids?</h2>
-                <p>1 из 6</p>
+                <p>{{ id }} из {{ queSt.getQuestions.length }}</p>
             </div>
             <ul>
-                <li class="form_lists"><label>
+                <li class="form_lists" v-for="(item, index) in question.answer" :key="index">
+                    <label>
                         <input class="form_radio" type="radio" name="question">
-                        Присматриваю за своим ребенком </label>
+                        {{ item }}
+                    </label>
                 </li>
-                <li class="form_lists"><label><input class="form_radio" type="radio" name="question">Присматриваю за
-                        своим ребенком </label></li>
                 <li class="form_lists"><label class="navbar-content"><input class="form_radio" type="radio"
                             name="question">
-                        <input type="text" placeholder="Свой вариант"></label></li>
+                        <input type="text" placeholder="Свой вариант">
+                    </label></li>
             </ul>
             <button class="form_footer">
                 Ответить
@@ -40,11 +29,21 @@
                 </button>
             </div>
         </div>
+        <notFound v-else />
     </div>
 </template>
 
-<script>
-export default {
-    components: {}
-}
+<script setup>
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import notFound from '@/pages/notFound.vue'
+import { useQuestionsStore } from "@/store/index.js";
+const queSt = useQuestionsStore();
+const route = useRoute()
+
+const id = computed(() => parseInt(route.params.id))
+const validId = computed(() => /^[1-9]+\d*$/.test(id.value))
+const question = computed(() => queSt.getQuestionById(id.value))
+const hasQuestion = computed(() => validId.value && question.value !== undefined)
+
 </script>
