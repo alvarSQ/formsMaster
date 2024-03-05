@@ -1,19 +1,24 @@
 <template>
   <div class="form_wrapper">
     <div class="form_container">
-      <input type="text" placeholder="Название" v-model="queSt.getOnePage.title">
+      <div class="navbar-content">
+        <input type="text" placeholder="Название" v-model="queSt.getOnePage.title">
+        <button @click="$router.push({ name: 'question-start'})">Готово</button>
+      </div>
       <textarea placeholder="Описание" v-model="queSt.getOnePage.description"></textarea>
     </div>
-    <div class="form_container">
+    <div class="form_container" v-for="item in queSt.getQuestions" :key="item.id">
       <div class="navbar-content">
-        <input type="text" placeholder="Вопрос" v-model="queSt.getQuestions[0].title">
+        <input type="text" placeholder="Вопрос" v-model="item.title">
         <select name="form" v-model="queSt.selectOption">
           <option value="one">Один из списка</option>
           <option value="several">Несколько из списка</option>
           <option value="free">Свободный ответ</option>
         </select>
       </div>
-      <varQuestions />
+      
+      <varQuestions :question="item" />
+      
       <div class="navbar-content">
         <button class="form_footer">
           Добавить вариант ответа
