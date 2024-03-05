@@ -16,20 +16,9 @@
           <option value="free">Свободный ответ</option>
         </select>
       </div>
-      
+
       <varQuestions :question="item" />
       
-      <div class="navbar-content">
-        <button class="form_footer">
-          Добавить вариант ответа
-        </button>
-        <button class="form_footer">
-          Добавить свой ответ
-        </button>
-      </div>
-      <button class="form_footer">
-        Добавить вопрос
-      </button>
     </div>
   </div>
 </template>

@@ -5,5 +5,7 @@ module.exports = {
   trailingComma: 'none',
   endOfLine: 'auto',
   htmlFormatWrapAttributes: 'force-aligned',
-  bracketSameLine: 'false'
+  bracketSameLine: true,
+  tabWidth: 2,
+  useTabs: false
 }

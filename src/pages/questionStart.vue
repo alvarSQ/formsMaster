@@ -5,7 +5,7 @@
             <p class="form_description">
                 {{ queSt.getOnePage.description }}
             </p>
-            <button class="form_footer"
+            <button class="form_btn"
                 @click="$router.push({ name: 'question', params: { id: queSt.getQuestions[0].id } })">
                 Начать опрос
             </button>

@@ -12,7 +12,8 @@ export const useQuestionsStore = defineStore('questions', {
                         'Присматриваю за внуками/племянниками',
                         'Присматриваю за младшим братом/сестрой'
                     ],
-                typeCheck: 'radio'
+                typeCheck: 'radio',
+                isTextArea: true
             },
             {
                 id: 2,
@@ -22,13 +23,15 @@ export const useQuestionsStore = defineStore('questions', {
                         'Удобнее смотреть с компьютера',
                         'Телефон не всегда под рукой'
                     ],
-                typeCheck: 'radio'
+                typeCheck: 'radio',
+                isTextArea: true
             },
             {
                 id: 3,
                 title: 'Если бы вы могли внести любое изменение в Findmykids, что бы это было?',
                 answer: [],
-                typeCheck: 'free'
+                typeCheck: 'free',                
+                isTextArea: true
             }
         ],        
         onePage:
@@ -56,10 +59,6 @@ export const useQuestionsStore = defineStore('questions', {
 
         
     },
-    actions: {
-        changeQuestions() {
-            this.questions = getQuestions
-        }
-    }
+    actions: {}
 })
 
