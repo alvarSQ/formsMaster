@@ -13,7 +13,8 @@ export const useQuestionsStore = defineStore('questions', {
                         'Присматриваю за младшим братом/сестрой'
                     ],
                 typeCheck: 'radio',
-                isTextArea: true
+                isTextArea: true,
+                isActiv: false
             },
             {
                 id: 2,
@@ -24,14 +25,16 @@ export const useQuestionsStore = defineStore('questions', {
                         'Телефон не всегда под рукой'
                     ],
                 typeCheck: 'checkbox',
-                isTextArea: true
+                isTextArea: true,
+                isActiv: true
             },
             {
                 id: 3,
                 title: 'Если бы вы могли внести любое изменение в Findmykids, что бы это было?',
                 answer: [],
                 typeCheck: 'free',                
-                isTextArea: true
+                isTextArea: true,
+                isActiv: false
             }
         ],        
         onePage:
@@ -39,7 +42,6 @@ export const useQuestionsStore = defineStore('questions', {
             title: "Веб-версия Findmykids",
             description: 'Мы заметили, что вы активно пользуетесь веб-версией Findmykids помимо приложения на телефоне. Расскажите, что вам в ней нравится и как мы можем ее улучшить.Это поможет сделать Findmykids удобнее для вас.'
         },
-        selectOption: 'one'
     }),
     // persist: {
     //     paths: ['questions'],
@@ -47,18 +49,24 @@ export const useQuestionsStore = defineStore('questions', {
     getters: {
         getQuestions: state => state.questions,
         getQuestionById: state => id => state.questions.find(el => el.id === id),
-        getDelTask: state => id => state.tasks.filter(el => el.id !== id),
         getOnePage: state => state.onePage,
 
-
-        sortByReadyTask: state => st => st.toSorted((x, y) => x.isReady - y.isReady),
-        sortByDeadLine: state => st => st.toSorted((x, y) => new Date(x.deadLine) - new Date(y.deadLine)),
-        sortById: state => st => st.toSorted((x, y) => x.id - y.id),
-        sortByPriority: state => st => st.toSorted((x, y) => y.priority - x.priority),
-        sortBySortHandle: state => st => st.toSorted((x, y) => x.sortHandle - y.sortHandle),      
-
+        getByActiv(state) {
+            let st = state.questions
+            return st = st.filter(el => el.isActiv === true)
+        },
+        getByNoActiv(state) {
+            let st = state.questions
+            return st = st.filter(el => el.isActiv === false)
+        }
         
     },
-    actions: {}
+    actions: {
+        triggerActiv(id) {
+            this.questions.forEach(el => el.isActiv = false)
+            const q = this.getQuestionById(id)
+            return q.isActiv = true
+        },
+    }
 })
 

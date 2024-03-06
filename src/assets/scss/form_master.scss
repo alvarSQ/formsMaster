@@ -120,3 +120,16 @@
     margin-left: 10px;
     cursor: pointer;
 }
+
+.form_counter {
+    width: 100px;
+    padding-top: 8px;
+    color: white;
+    font-weight: 600;
+    text-align: right;
+}
+
+.form_header {
+  display: flex;
+  justify-content: space-between;
+}
