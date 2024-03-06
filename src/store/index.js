@@ -23,7 +23,7 @@ export const useQuestionsStore = defineStore('questions', {
                         'Удобнее смотреть с компьютера',
                         'Телефон не всегда под рукой'
                     ],
-                typeCheck: 'radio',
+                typeCheck: 'checkbox',
                 isTextArea: true
             },
             {

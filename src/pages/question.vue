@@ -10,14 +10,15 @@
           class="form_lists"
           v-for="(item, index) in question.answer"
           :key="index">
-          <label>
-            <input class="form_radio" type="radio" name="question" />
+          <label>            
+            <input class="form_radio" :type="question.typeCheck" name="question"/>
             {{ item }}
           </label>
         </li>
         <li class="form_lists" v-if="question.isTextArea">
           <label class="navbar-content">
-            <input class="form_radio" type="radio" name="question" />
+            <input class="form_radio" type="radio" name="question"  v-if="question.typeCheck === 'free'"  />
+            <input class="form_radio" :type="question.typeCheck" name="question" v-else />
             <input type="text" placeholder="Свой вариант" />
           </label>
         </li>

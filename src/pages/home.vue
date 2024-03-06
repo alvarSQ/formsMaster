@@ -10,9 +10,9 @@
     <div class="form_container" v-for="item in queSt.getQuestions" :key="item.id">
       <div class="navbar-content">
         <input type="text" placeholder="Вопрос" v-model="item.title">
-        <select name="form" v-model="queSt.selectOption">
-          <option value="one">Один из списка</option>
-          <option value="several">Несколько из списка</option>
+        <select name="form" v-model="item.typeCheck">
+          <option value="radio">Один из списка</option>
+          <option value="checkbox">Несколько из списка</option>
           <option value="free">Свободный ответ</option>
         </select>
       </div>
