@@ -32,6 +32,7 @@ const id = computed(() => parseInt(route.params.id))
 const validId = computed(() => /^[1-9]+\d*$/.test(id.value))
 const question = computed(() => queSt.getQuestionById(id.value))
 const hasQuestion = computed(() => validId.value && question.value !== undefined)
+
 const isMaxPage = computed(() => id.value >= queSt.getQuestions.length)
 const isMinPage = computed(() => id.value <= 1)
 </script>

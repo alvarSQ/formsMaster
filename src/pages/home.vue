@@ -6,7 +6,7 @@
           type="text"
           placeholder="Название"
           v-model="queSt.getOnePage.title" />
-        <button @click="$router.push({ name: 'question-start' })">
+        <button @click="startForm">
           Готово
         </button>
       </div>
@@ -32,10 +32,10 @@
     <div
       class="form_container"
       v-for="item in queSt.getByNoActiv"
-      :key="item.id"      
-      @click="queSt.triggerActiv(item.id)">
-      <div class="navbar-content">
-        <h2>{{ item.title }}</h2>
+      :key="item.id" >
+      <div class="form_header">
+        <h2 @click="queSt.triggerActiv(item.id)">{{ item.title }}</h2>
+        <p class="q_del" style="margin-top: 8px;" @click="delQuestion(item.id)">&#10060;</p>
       </div>
       <ulQuestions :question="item" />
     </div>
@@ -45,7 +45,19 @@
 <script setup>
 import varQuestions from '@/components/varQuestions.vue'
 import ulQuestions from '@/components/ulQuestion.vue'
+import { useRouter } from 'vue-router'
 import { useQuestionsStore } from '@/store/index.js'
+
 const queSt = useQuestionsStore()
+const router = useRouter()
+
+const startForm = () => {  
+  if (queSt.validQuestions) {
+    return alert('Заполни все поля')
+  }
+  router.push({ name: 'question-start' })
+}
+
+const delQuestion = id => queSt.questions.splice(id - 1, 1)
 
 </script>

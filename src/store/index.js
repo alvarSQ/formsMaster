@@ -2,6 +2,17 @@ import { defineStore } from 'pinia'
 
 export const useQuestionsStore = defineStore('questions', {
     state: () => ({
+        // questions: [
+        //     {
+        //         id: 1,
+        //         title: '',
+        //         answer:
+        //             [],
+        //         typeCheck: 'radio',
+        //         isTextArea: false,
+        //         isActiv: true
+        //     }
+        // ],  
         questions: [
             {
                 id: 1,
@@ -14,7 +25,7 @@ export const useQuestionsStore = defineStore('questions', {
                     ],
                 typeCheck: 'radio',
                 isTextArea: true,
-                isActiv: false
+                isActiv: true
             },
             {
                 id: 2,
@@ -26,7 +37,7 @@ export const useQuestionsStore = defineStore('questions', {
                     ],
                 typeCheck: 'checkbox',
                 isTextArea: true,
-                isActiv: true
+                isActiv: false
             },
             {
                 id: 3,
@@ -54,10 +65,14 @@ export const useQuestionsStore = defineStore('questions', {
         getByActiv(state) {
             let st = state.questions
             return st = st.filter(el => el.isActiv === true)
-        },
+        }, 
         getByNoActiv(state) {
             let st = state.questions
             return st = st.filter(el => el.isActiv === false)
+        },
+
+        validQuestions(state) {
+            return state.questions.some(el => el.title === '' || (el.answer[0] === undefined && !el.isTextArea))           
         }
         
     },
@@ -66,7 +81,7 @@ export const useQuestionsStore = defineStore('questions', {
             this.questions.forEach(el => el.isActiv = false)
             const q = this.getQuestionById(id)
             return q.isActiv = true
-        },
+        },        
     }
 })
 

@@ -4,7 +4,7 @@
       class="form_lists"
       v-for="(item, index) in props.question.answer"
       :key="index">
-      <label>
+      <label v-if="item">
         <input class="form_radio" :type="props.question.typeCheck" name="question" />
         {{ item }}
       </label>
