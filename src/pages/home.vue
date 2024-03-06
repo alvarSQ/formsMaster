@@ -20,6 +20,7 @@
       <varQuestions :question="item" />
       
     </div>
+    
   </div>
 </template>
 

@@ -25,8 +25,8 @@
       </ul>
       <button class="form_btn">Ответить</button>
       <div class="navbar-content">
-        <button class="form_btn">Назад</button>
-        <button class="form_btn">Вперед</button>
+        <button class="form_btn" :disabled="isMinPage" @click="$router.push({ name: 'question', params: { id: question.id - 1 } })">Назад</button>
+        <button class="form_btn" :disabled="isMaxPage" @click="$router.push({ name: 'question', params: { id: question.id + 1 } })">Вперед</button>
       </div>
     </div>
     <notFound v-else />
@@ -41,10 +41,11 @@ import { useQuestionsStore } from '@/store/index.js'
 const queSt = useQuestionsStore()
 const route = useRoute()
 
+
 const id = computed(() => parseInt(route.params.id))
 const validId = computed(() => /^[1-9]+\d*$/.test(id.value))
 const question = computed(() => queSt.getQuestionById(id.value))
-const hasQuestion = computed(
-  () => validId.value && question.value !== undefined
-)
+const hasQuestion = computed(() => validId.value && question.value !== undefined)
+const isMaxPage = computed(() => id.value >= queSt.getQuestions.length)
+const isMinPage = computed(() => id.value <= 1)
 </script>
