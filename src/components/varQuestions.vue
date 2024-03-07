@@ -46,7 +46,6 @@
 </template>
 
 <script setup>
-import { computed, watch, ref } from 'vue'
 import { useQuestionsStore } from '@/store/index.js'
 
 const queSt = useQuestionsStore()
@@ -62,9 +61,11 @@ const addQuestion = () => {
     id: queSt.getQuestions.reduce((max, el) => (el.id > max ? el.id : max), 0) + 1,
     title: '',
     answer: [],
+    resultSurvey: [],
     typeCheck: 'radio',
     isTextArea: false,
-    isActiv: true
+    isActiv: true,
+    isAnswer: false    
   }  
   queSt.getQuestions.push(newQ)
   queSt.triggerActiv(newQ.id)

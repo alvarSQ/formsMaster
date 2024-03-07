@@ -17,7 +17,8 @@ export const useQuestionsStore = defineStore('questions', {
                 typeCheck: 'radio',
                 isChecked: false,
                 isTextArea: true,
-                isActiv: true
+                isActiv: true,
+                isAnswer: false
             },
             {
                 id: 2,
@@ -30,7 +31,8 @@ export const useQuestionsStore = defineStore('questions', {
                 resultSurvey: [],
                 typeCheck: 'checkbox',
                 isTextArea: true,
-                isActiv: false
+                isActiv: false,
+                isAnswer: false
             },
             {
                 id: 3,
@@ -39,10 +41,13 @@ export const useQuestionsStore = defineStore('questions', {
                 resultSurvey: [],
                 typeCheck: 'free',
                 isTextArea: true,
-                isActiv: false
+                isActiv: false,
+                isAnswer: false
             }
         ],
-        
+        isJson: true,
+        jsonAnswer: [],
+        json: {},
         onePage:
         {
             title: "Веб-версия Findmykids",
@@ -53,6 +58,7 @@ export const useQuestionsStore = defineStore('questions', {
     //     paths: ['questions'],
     // },
     getters: {
+        getJson: state => state.json,
         getQuestions: state => state.questions,
         getQuestionById: state => id => state.questions.find(el => el.id === id),
         getOnePage: state => state.onePage,

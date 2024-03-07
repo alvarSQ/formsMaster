@@ -11,10 +11,18 @@ import AboutPage from "./pages/about";
 import NotFoundPage from "./pages/notFound";
 import StartQuestionPage from "./pages/questionStart";
 import QuestionPage from "./pages/question";
+import JsonPage from "./pages/json.vue";
 
 const routers = createRouter({
   history: routerHistory,
   routes: [
+    {
+      path: "/json",
+      name: "json",
+      components: {
+        json: JsonPage
+      },
+    },
     {
       path: "/",
       name: "home",

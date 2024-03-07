@@ -1,5 +1,6 @@
 <template>
-  <div class="wapper">
+  <router-view name="json" />
+  <div class="wapper" v-if="queSt.isJson">
     <Header />
     <div class="wrapper-content">
       <div class="container">
@@ -10,14 +11,10 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import { useQuestionsStore } from '@/store/index.js'
+const queSt = useQuestionsStore()
 
-export default {
-  components: {
-    Header,
-    Footer
-  }
-}
 </script>

@@ -55,7 +55,7 @@ const startForm = () => {
   }
   if (queSt.validQuestions) {
     return alert('Заполни все поля')
-  }
+  }  
   router.push({ name: 'question-start' })
 }
 
