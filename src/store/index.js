@@ -1,18 +1,7 @@
 import { defineStore } from 'pinia'
 
 export const useQuestionsStore = defineStore('questions', {
-    state: () => ({
-        // questions: [
-        //     {
-        //         id: 1,
-        //         title: '',
-        //         answer:
-        //             [],
-        //         typeCheck: 'radio',
-        //         isTextArea: false,
-        //         isActiv: true
-        //     }
-        // ],  
+    state: () => ({        
         questions: [
             {
                 id: 1,
@@ -23,7 +12,10 @@ export const useQuestionsStore = defineStore('questions', {
                         'Присматриваю за внуками/племянниками',
                         'Присматриваю за младшим братом/сестрой'
                     ],
+                resultSurvey: [],
+                freeAnswer: '',
                 typeCheck: 'radio',
+                isChecked: false,
                 isTextArea: true,
                 isActiv: true
             },
@@ -35,6 +27,7 @@ export const useQuestionsStore = defineStore('questions', {
                         'Удобнее смотреть с компьютера',
                         'Телефон не всегда под рукой'
                     ],
+                resultSurvey: [],
                 typeCheck: 'checkbox',
                 isTextArea: true,
                 isActiv: false
@@ -43,11 +36,13 @@ export const useQuestionsStore = defineStore('questions', {
                 id: 3,
                 title: 'Если бы вы могли внести любое изменение в Findmykids, что бы это было?',
                 answer: [],
-                typeCheck: 'free',                
+                resultSurvey: [],
+                typeCheck: 'free',
                 isTextArea: true,
                 isActiv: false
             }
-        ],        
+        ],
+        
         onePage:
         {
             title: "Веб-версия Findmykids",
@@ -65,23 +60,31 @@ export const useQuestionsStore = defineStore('questions', {
         getByActiv(state) {
             let st = state.questions
             return st = st.filter(el => el.isActiv === true)
-        }, 
+        },
         getByNoActiv(state) {
             let st = state.questions
             return st = st.filter(el => el.isActiv === false)
         },
 
         validQuestions(state) {
-            return state.questions.some(el => el.title === '' || (el.answer[0] === undefined && !el.isTextArea))           
+            return state.questions.some(el => el.title === '' || (el.answer[0] === undefined && !el.isTextArea))
         }
-        
+
     },
     actions: {
         triggerActiv(id) {
             this.questions.forEach(el => el.isActiv = false)
             const q = this.getQuestionById(id)
             return q.isActiv = true
-        },        
-    }
+        },
+        validId() {
+            let i = 0
+            this.getQuestions.forEach(el => {
+                i += 1
+                el.id = i
+            })
+        }
+    },
+
 })
 

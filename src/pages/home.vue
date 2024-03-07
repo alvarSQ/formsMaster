@@ -6,18 +6,13 @@
           type="text"
           placeholder="Название"
           v-model="queSt.getOnePage.title" />
-        <button @click="startForm">
-          Готово
-        </button>
+        <button @click="startForm">Готово</button>
       </div>
       <textarea
         placeholder="Описание"
         v-model="queSt.getOnePage.description"></textarea>
     </div>
-    <div
-      class="form_container"
-      v-for="item in queSt.getByActiv"
-      :key="item.id">
+    <div class="form_container" v-for="item in queSt.getByActiv" :key="item.id">
       <div class="navbar-content">
         <input type="text" placeholder="Вопрос" v-model="item.title" />
         <select name="form" v-model="item.typeCheck">
@@ -32,10 +27,12 @@
     <div
       class="form_container"
       v-for="item in queSt.getByNoActiv"
-      :key="item.id" >
+      :key="item.id">
       <div class="form_header">
         <h2 @click="queSt.triggerActiv(item.id)">{{ item.title }}</h2>
-        <p class="q_del" style="margin-top: 8px;" @click="delQuestion(item.id)">&#10060;</p>
+        <p class="q_del" style="margin-top: 8px" @click="delQuestion(item.id)">
+          &#10060;
+        </p>
       </div>
       <ulQuestions :question="item" />
     </div>
@@ -51,7 +48,11 @@ import { useQuestionsStore } from '@/store/index.js'
 const queSt = useQuestionsStore()
 const router = useRouter()
 
-const startForm = () => {  
+const startForm = () => {
+  const maxid = Math.max(...queSt.getQuestions.map(el => el.id))
+  if (maxid > queSt.getQuestions.length) {
+    queSt.validId()
+  }
   if (queSt.validQuestions) {
     return alert('Заполни все поля')
   }
@@ -59,5 +60,4 @@ const startForm = () => {
 }
 
 const delQuestion = id => queSt.questions.splice(id - 1, 1)
-
 </script>
