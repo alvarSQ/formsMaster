@@ -7,7 +7,6 @@
       <label v-if="item">
         <input
           class="form_radio"
-          :id="props.question.id"
           :disabled="question.isAnswer"
           :type="props.question.typeCheck"
           :value="item"
@@ -17,25 +16,14 @@
       </label>
     </li>
     <li class="form_lists" v-if="props.question.isTextArea">
-      <label class="navbar-content">
-        <input
+    <label class="navbar-content">
+      <input
           class="form_radio"
-          type="radio"
+          :type="defineTypeCheck"
           :value="props.question.freeAnswer"
           @click="getAnswer"
           :disabled="!props.question.freeAnswer || question.isAnswer"
-          name="question"
-          :id="props.question.id"
-          v-if="props.question.typeCheck === 'free'" />
-        <input
-          class="form_radio"
-          :id="props.question.id"
-          :type="props.question.typeCheck"
-          :value="props.question.freeAnswer"
-          @click="getAnswer"
-          :disabled="!props.question.freeAnswer || question.isAnswer"
-          name="question"
-          v-else />
+          name="question" />
         <input
           type="text"
           placeholder="Свой вариант"
@@ -46,14 +34,21 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { computed } from 'vue'
 import { useQuestionsStore } from '@/store/index.js'
 const queSt = useQuestionsStore()
 
-const isChecked = ref(false)
-
 const props = defineProps({
-  question: Object
+  question: { type: Object, required: true }
+})
+
+const defineTypeCheck = computed(() => {
+  if (props.question.typeCheck === 'checkbox') {
+    return 'checkbox'
+  }
+  if (props.question.typeCheck === 'radio' || props.question.typeCheck === 'free') {
+    return 'radio'
+  }
 })
 
 const getAnswer = e => {
@@ -61,15 +56,16 @@ const getAnswer = e => {
   if (e.target.checked && e.target._value) {
     props.question.resultSurvey.push(e.target._value)
   }
-  if ((props.question.typeCheck === 'radio' || props.question.typeCheck === 'free') && props.question.resultSurvey.length >= 2) {    
+  if (
+    (props.question.typeCheck === 'radio' ||
+      props.question.typeCheck === 'free') &&
+    props.question.resultSurvey.length >= 2
+  ) {
     cv.shift()
   }
   if (!e.target.checked) {
     cv = props.question.resultSurvey.filter(el => el !== e.target._value)
   }
-  props.question.resultSurvey = cv  
+  props.question.resultSurvey = cv
 }
-
-
-
 </script>
