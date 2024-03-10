@@ -10,12 +10,7 @@
       <li>Обработка несуществующих роутов</li>
       <li>Хеши и моды для роутера</li>
       <li>Настройка общего конфига</li>
+      <li>...</li>
     </ul>
-    <p>
-      Сделано на курсе
-      <a href="https://tocode.ru/courses/vuejs-3-s-nulya-do-rezultata/"
-        >Cделано на курсе "Vue.js 3 c нуля до результата"</a
-      >
-    </p>
   </div>
 </template>
