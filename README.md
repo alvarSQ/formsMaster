@@ -1,4 +1,4 @@
-See [Просмотр](https://forms-master.argovera.ru).
+See [forms-master.argovera.ru](https://forms-master.argovera.ru).
 
 # vue form master
 
