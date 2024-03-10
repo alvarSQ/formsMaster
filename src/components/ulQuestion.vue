@@ -34,9 +34,11 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { ref, computed, onBeforeMount } from 'vue'
 import { useQuestionsStore } from '@/store/index.js'
 const queSt = useQuestionsStore()
+
+const inCheck = ref(null)
 
 const props = defineProps({
   question: { type: Object, required: true }
@@ -68,4 +70,5 @@ const getAnswer = e => {
   }
   props.question.resultSurvey = cv
 }
+
 </script>

@@ -8,6 +8,10 @@
 
       <ulQuestions :question="question" />
 
+      <div class="answer_string">
+       <b>Ваш ответ:</b> {{ question.resultSurvey.join(', ') }}
+      </div>
+
       <button class="form_btn" :disabled="question.isAnswer" @click="toАnswer">Ответить</button>
       <div class="navbar-content">
         <button

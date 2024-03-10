@@ -133,3 +133,12 @@
   display: flex;
   justify-content: space-between;
 }
+
+.answer_string {
+    margin-top: 15px;
+    padding: 10px;
+    min-height: 43px;
+    background-color: white;
+    color: $purple-color;
+    border-radius: 15px;
+}
