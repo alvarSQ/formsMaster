@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 
 export const useQuestionsStore = defineStore('questions', {
-    state: () => ({        
+    state: () => ({
         questions: [
             {
                 id: 1,
@@ -79,13 +79,13 @@ export const useQuestionsStore = defineStore('questions', {
         }
 
     },
-    actions: {
+    actions: {        
         handleFileUpload(e) {
-          const fr = new FileReader();
-          fr.readAsText(e.target.files[0])
-          fr.onload = () => {
-            this.questions = JSON.parse(fr.result)        
-          }
+            const fr = new FileReader();
+            fr.readAsText(e.target.files[0])
+            fr.onload = () => {
+                this.questions = JSON.parse(fr.result)
+            }
         },
         triggerActiv(id) {
             this.questions.forEach(el => el.isActiv = false)

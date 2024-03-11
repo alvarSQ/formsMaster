@@ -6,13 +6,17 @@
           type="text"
           placeholder="Название"
           v-model="queSt.getOnePage.title" />
-          <input type="file" id="form_file" accept=".json" @change="queSt.handleFileUpload"/>
+        <input
+          type="file"
+          id="form_file"
+          accept=".json"
+          @change="queSt.handleFileUpload" />          
         <button @click="startForm">Готово</button>
-
       </div>
       <textarea
         placeholder="Описание"
         v-model="queSt.getOnePage.description"></textarea>
+       <a :download="`${queSt.getOnePage.title}.json`" :href="saveForm"><p class="form_btn">Сохранить форму</p></a>
     </div>
     <div class="form_container" v-for="item in queSt.getByActiv" :key="item.id">
       <div class="navbar-content">
@@ -42,7 +46,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onBeforeMount } from 'vue'
+import { computed } from 'vue'
 import varQuestions from '@/components/varQuestions.vue'
 import ulQuestions from '@/components/ulQuestion.vue'
 import { useRouter } from 'vue-router'
@@ -58,9 +62,16 @@ const startForm = () => {
   }
   if (queSt.validQuestions) {
     return alert('Заполни все поля')
-  }  
+  }
   router.push({ name: 'question-start' })
 }
+
+const saveForm = computed(() => {
+  const blob = new Blob([JSON.stringify(queSt.getQuestions, null, '\t')], {
+    type: 'application/json'
+  })
+  return URL.createObjectURL(blob)
+})
 
 const delQuestion = id => queSt.questions.splice(id - 1, 1)
 </script>
