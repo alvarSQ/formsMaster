@@ -48,6 +48,7 @@ export const useQuestionsStore = defineStore('questions', {
         isJson: true,
         jsonAnswer: [],
         json: {},
+        fileOut: [],
         onePage:
         {
             title: "Веб-версия Findmykids",
@@ -62,6 +63,7 @@ export const useQuestionsStore = defineStore('questions', {
         getQuestions: state => state.questions,
         getQuestionById: state => id => state.questions.find(el => el.id === id),
         getOnePage: state => state.onePage,
+        getFileOut: state => state.fileOut,
 
         getByActiv(state) {
             let st = state.questions
@@ -78,6 +80,13 @@ export const useQuestionsStore = defineStore('questions', {
 
     },
     actions: {
+        handleFileUpload(e) {
+          const fr = new FileReader();
+          fr.readAsText(e.target.files[0])
+          fr.onload = () => {
+            this.questions = JSON.parse(fr.result)        
+          }
+        },
         triggerActiv(id) {
             this.questions.forEach(el => el.isActiv = false)
             const q = this.getQuestionById(id)
@@ -89,7 +98,8 @@ export const useQuestionsStore = defineStore('questions', {
                 i += 1
                 el.id = i
             })
-        }
+        },
+
     },
 
 })

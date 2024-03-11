@@ -6,7 +6,9 @@
           type="text"
           placeholder="Название"
           v-model="queSt.getOnePage.title" />
+          <input type="file" id="form_file" accept=".json" @change="queSt.handleFileUpload"/>
         <button @click="startForm">Готово</button>
+
       </div>
       <textarea
         placeholder="Описание"
@@ -40,6 +42,7 @@
 </template>
 
 <script setup>
+import { ref, computed, onBeforeMount } from 'vue'
 import varQuestions from '@/components/varQuestions.vue'
 import ulQuestions from '@/components/ulQuestion.vue'
 import { useRouter } from 'vue-router'

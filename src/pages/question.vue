@@ -58,6 +58,7 @@ const toАnswer = () => {
     queSt.jsonAnswer.push(newAnswer)
   }
   question.value.isAnswer = true
+  isMaxPage.value ? toEnd() : toForward()
 }
 
 const toForward = () => {
@@ -67,7 +68,7 @@ const toBack = () => {
   router.push({ name: 'question', params: { id: question.value.id - 1 } })
 }
 const toEnd = () => {
-  queSt.json = JSON.stringify(queSt.jsonAnswer);
+  queSt.json = JSON.stringify(queSt.jsonAnswer, null, "\t");
   queSt.isJson = false
   router.push({ name: 'json' })
 }

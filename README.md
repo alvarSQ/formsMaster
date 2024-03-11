@@ -1,23 +1,6 @@
-# vue form master
+[forms-master.argovera.ru](https://forms-master.argovera.ru).
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
+Образец файла для загрузки src\assets\forms\findmykids.json
 
 Опросник должен представлять собой мастер, подобный google forms. Каждый новый вопрос должен иметь свой url. Вопросы могут быть: 
 с одним вариантом ответа, с несколькими вариантами ответа, открытый вопрос. Также среди вариантов может содержаться 

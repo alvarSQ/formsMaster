@@ -12,6 +12,7 @@ import NotFoundPage from "./pages/notFound";
 import StartQuestionPage from "./pages/questionStart";
 import QuestionPage from "./pages/question";
 import JsonPage from "./pages/json.vue";
+import JsonFaile from "@/assets/forms/findmykids.json";
 
 const routers = createRouter({
   history: routerHistory,
@@ -21,6 +22,13 @@ const routers = createRouter({
       name: "json",
       components: {
         json: JsonPage
+      },
+    },
+    {
+      path: "/findmykids",
+      name: "findmykids",
+      components: {
+        json: JsonFaile
       },
     },
     {
